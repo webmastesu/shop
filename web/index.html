@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="shop">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>shop</title>
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Lottie CSS and JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+
+  <style>
+    /* Style to eliminate the white screen */
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #yourBackgroundColor; /* Replace with your desired background color */
+      height: 100vh;
+    }
+
+    /* Loading indicator style */
+    #loading-indicator {
+      width: 200px; /* Adjust size as needed */
+      height: 200px;
+    }
+  </style>
+</head>
+<body>
+<!-- Lottie Animation container -->
+<div id="loading-indicator"></div>
+
+<script src="flutter_bootstrap.js" async></script>
+
+<script>
+  // Load Lottie animation
+  var animation = lottie.loadAnimation({
+    container: document.getElementById('loading-indicator'), // the dom element
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: 'assets/lottie/loading_animation.json', // path to your Lottie animation file
+    xhrSetup: function(xhr) {
+      xhr.responseType = 'text'; // Set responseType to 'text'
+    }
+  });
+
+  // Hide Lottie animation after Flutter app is loaded
+  window.addEventListener('flutter-first-frame', function () {
+    document.getElementById('loading-indicator').style.display = 'none';
+  });
+</script>
+</body>
+</html>
